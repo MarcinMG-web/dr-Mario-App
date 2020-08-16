@@ -54,6 +54,6 @@ h1 {
 }
 .summaryRow:hover {
   color:orange;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 

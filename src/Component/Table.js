@@ -26,19 +26,39 @@ const Table = () => {
     },[])
     
     const sortClick = () => {
-      console.log('sortowanie')
+      console.log('sortowanie');
       
-      console.log(posts)
-      posts.sort(function(a,b){
-        console.log(a,b)
-        return (b.lenght - a.lenght);
-      });
-      console.log(posts)
+      
 
-      // const posts =[setPosts({posts})]
-      // posts.prototype.sort()
+        // możesz łatwo zmienić to na dowolną właściwość, na przykład „email” lub „body”
+        // let property = "name";  
+    
+    
+        // JSON.data.children.sort(function(a, b) {
+    
+        //     // utwórz nowe zmienne, aby łatwo uzyskać dostęp do zagnieżdżonych danych do sortowania
+        //     let property1 = a.data[property];
+        //     let property2 = b.data[property];
+    
+        //     if (property1 < property2) {    //sprawdza „niższą” kolejność alfabetyczną
+        //         return -1
+        //     };
+        //     if (property1 > property2) {    // sprawdza „wyższą” kolejność alfabetyczną
+        //         return 1
+        //     };
+        //     return 0    // jeśli name są równe 
+    
+        // });
+
       
+      console.log(posts);
+      const sortedByName = posts.sort(function(a,b){
+        return a.email - b.email;
+       
+      })
       
+      console.log(sortedByName);
+   
     }
 
     if(loading){
@@ -57,7 +77,7 @@ const Table = () => {
       <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
     </tr>
   </thead>
-  <tbody key={Math.floor(Math.random()*1000)+1}>
+  <tbody >
     <Row posts={posts} />
     {/* 
     <th scope="row">{post.id}</th>
