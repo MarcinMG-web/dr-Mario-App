@@ -1,4 +1,4 @@
-# Gdr-Eryk-App -medical aplication
+# dr-Eryk-App -medical aplication
 
 It's not finished project I still work at.
 
