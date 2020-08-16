@@ -27,10 +27,18 @@ const Table = () => {
     
     const sortClick = () => {
       console.log('sortowanie')
-      // sortowanie 
-      // Array.prototype.sort(posts)
-      // Array.posts.sort()
-      // console.log(posts)
+      
+      console.log(posts)
+      posts.sort(function(a,b){
+        console.log(a,b)
+        return (b.lenght - a.lenght);
+      });
+      console.log(posts)
+
+      // const posts =[setPosts({posts})]
+      // posts.prototype.sort()
+      
+      
     }
 
     if(loading){
@@ -46,7 +54,7 @@ const Table = () => {
       <th scope="col" className="scope" key={2} onClick={() => sortClick()}>Name</th>
       <th scope="col" className="scope" key={3} onClick={() => sortClick()}>Email</th>
       <th scope="col" className="scope" key={4} onClick={() => sortClick()}>Body</th>
-      <th scope="col" className="sumaryCol" key={5} onClick={() => sortClick()}>Summary</th>
+      <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
     </tr>
   </thead>
   <tbody key={Math.floor(Math.random()*1000)+1}>
