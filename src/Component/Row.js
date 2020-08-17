@@ -2,7 +2,7 @@ import React from 'react'
 
 const Row = ({posts} ) => {
 
- 
+ console.log("przkazane ROW", posts)
     return (
       
      posts.map(post => (

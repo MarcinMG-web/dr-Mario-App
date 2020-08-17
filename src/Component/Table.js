@@ -5,61 +5,39 @@ import axios from 'axios'
 const Table = () => {
 
     const [loading, setLoadin] = useState(true)
-    // const [error, setError] = useState('')
     const [posts, setPosts] = useState([])
-    // const rowsArray = []
-
+    
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/comments`)
         .then(response => {
-            console.log(response)
+            // console.log(response)
             setLoadin(false)
             setPosts(response.data)
-            // setError('')
         })
         .catch(err => {
             console.log(err)
             setLoadin(false)
             setPosts([])
-            // setError('Something went wrong ... ')
        })
     },[])
     
-    const sortClick = () => {
-      console.log('sortowanie');
-      
-      
+    const sortClick = (properties) => {
+      function compare(a, b) {
+          if (a[properties] < b[properties]) {
+              return -1;
+          }
+          if (a[properties] > b[properties]) {
+              return 1;
+          }
+          return 0;
+      }
+      const post = posts.sort(compare).slice();
+      setPosts(post);
+      console.log('sortClick')
 
-        // możesz łatwo zmienić to na dowolną właściwość, na przykład „email” lub „body”
-        // let property = "name";  
-    
-    
-        // JSON.data.children.sort(function(a, b) {
-    
-        //     // utwórz nowe zmienne, aby łatwo uzyskać dostęp do zagnieżdżonych danych do sortowania
-        //     let property1 = a.data[property];
-        //     let property2 = b.data[property];
-    
-        //     if (property1 < property2) {    //sprawdza „niższą” kolejność alfabetyczną
-        //         return -1
-        //     };
-        //     if (property1 > property2) {    // sprawdza „wyższą” kolejność alfabetyczną
-        //         return 1
-        //     };
-        //     return 0    // jeśli name są równe 
-    
-        // });
-
-      
-      console.log(posts);
-      const sortedByName = posts.sort(function(a,b){
-        return a.email - b.email;
-       
-      })
-      
-      console.log(sortedByName);
-   
-    }
+  }
+  
+  console.log("posortowane",posts)
 
     if(loading){
       return (`loading ...`)
@@ -70,10 +48,10 @@ const Table = () => {
 <table className="table table-striped table-dark">
   <thead>
     <tr>
-      <th scope="col" className="scope" key={1} onClick={() => sortClick()}>ID</th>
-      <th scope="col" className="scope" key={2} onClick={() => sortClick()}>Name</th>
-      <th scope="col" className="scope" key={3} onClick={() => sortClick()}>Email</th>
-      <th scope="col" className="scope" key={4} onClick={() => sortClick()}>Body</th>
+      <th scope="col" className="scope" key={1}>ID</th>
+      <th scope="col" className="scope" key={2} onClick={() => sortClick("name")}>Name</th>
+      <th scope="col" className="scope" key={3} onClick={() => sortClick("email")}>Email</th>
+      <th scope="col" className="scope" key={4} onClick={() => sortClick("body")}>Body</th>
       <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
     </tr>
   </thead>
@@ -95,3 +73,4 @@ const Table = () => {
 
 
 export default Table
+
