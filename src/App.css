@@ -36,24 +36,76 @@ h1 {
   background-color: black;
   color: wheat;
 }
+
+.Table {
+  border-spacing: 0px;
+  background: #fff;
+  box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  width: 100%;
+  
+}
+
+.DataTable {
+  position: relative;
+  max-width: 100vw;
+}
+
+.ScrollContainer {
+  overflow-x: auto;
+  margin-right: 145px;
+  
+}
+
 .scope{
   color: #159a84;
   cursor: pointer;
   z-index: 0;
- 
-}
-.summaryCol{
-  color:red;
-  z-index: 2;
- 
 }
 
-.summaryRow{
-  z-index: 2;
-   
+/* summary */
+.summaryCol{
+  color:red;
+ 
+  background-color: black;
+  right: 0;
+  position: absolute;
+  top: auto;
+  right: 0;
+  width: 145px;
+  white-space: unset;
+  text-align: center;
+  backface-visibility: hidden;
+  
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
 }
+
+.summaryRow {
+  z-index: 2;
+  background-color: black;
+  backface-visibility: hidden;
+  right: 0;
+  
+  position: absolute;
+  top: auto;
+  right: 0;
+  width: 145px;
+  
+  white-space: unset;
+  text-align: center;
+  backface-visibility: hidden;
+ 
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  
+}
+
 .summaryRow:hover {
   color:orange;
-  /* cursor: pointer; */
+  overflow-wrap: break-word;
+  
 }
 

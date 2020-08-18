@@ -44,29 +44,31 @@ const Table = () => {
     }
 
    return (
-
-<table className="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col" className="scope" key={1}>ID</th>
-      <th scope="col" className="scope" key={2} onClick={() => sortClick("name")}>Name</th>
-      <th scope="col" className="scope" key={3} onClick={() => sortClick("email")}>Email</th>
-      <th scope="col" className="scope" key={4} onClick={() => sortClick("body")}>Body</th>
-      <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
-    </tr>
-  </thead>
-  <tbody >
-    <Row posts={posts} />
-    {/* 
-    <th scope="row">{post.id}</th>
-       <td>{post.name}</td>
-       <td>{post.email}</td>
-       <td>{post.body}</td>
-    */}
-    
-  </tbody>
-</table>
-       
+<div className="DataTable">
+  <div className="ScrollContainer">
+    <table className="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col" className="scope" key={1}>ID</th>
+          <th scope="col" className="scope" key={2} onClick={() => sortClick("name")}>Name</th>
+          <th scope="col" className="scope" key={3} onClick={() => sortClick("email")}>Email</th>
+          <th scope="col" className="scope" key={4} onClick={() => sortClick("body")}>Body</th>
+          <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
+        </tr>
+      </thead>
+      <tbody >
+        <Row posts={posts} />
+        {/* 
+        <th scope="row">{post.id}</th>
+          <td>{post.name}</td>
+          <td>{post.email}</td>
+          <td>{post.body}</td>
+        */}
+        
+      </tbody>
+    </table>
+  </div>
+</div>
   )
   
 }
