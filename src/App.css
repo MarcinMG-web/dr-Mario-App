@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -14,7 +16,6 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Lato', sans-serif;
-  
 }
 
 .drHeder {
@@ -51,18 +52,13 @@ h1 {
 
 .headingTable {
   color: #159a84;
-  cursor: pointer;
-  word-wrap: break-word;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  
+  cursor: pointer; 
 }
 
 .summaryHeadingTable {
   color:red;
- 
   background-color: black;
-  right: 0;
+  
   position: absolute;
   top: auto;
   right: 0;
@@ -79,8 +75,6 @@ h1 {
 
 .summaryRow {
   background-color: black;
-  backface-visibility: hidden;
-  right: 0;
   margin: 0;
   position: absolute;
   top: auto;
@@ -89,6 +83,7 @@ h1 {
   
   white-space: unset;
   text-align: center;
+  align-items: center;
   backface-visibility: hidden;
  
   word-wrap: break-word;
@@ -99,4 +94,30 @@ h1 {
 
 .summaryRow:hover {
   color:orange;
+}
+
+#spinner {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 4;
+}
+
+.loading {
+  border: 2px solid #ccc;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top-color: #1ecd97;
+  border-left-color: #1ecd97;
+  animation: spin 1s infinite ease-in;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
 }

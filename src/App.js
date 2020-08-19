@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Table from './Component/Table'
-import Heder  from './Component/Heder'
+import Heder from './Component/Heder'
 
 function App() {
   return (

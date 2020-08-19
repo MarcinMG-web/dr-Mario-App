@@ -15,7 +15,7 @@ const Row = ({posts} ) => {
               # {post.id} <br/>
               Name: {post.name} <br/>
               Email: {post.email} <br/>
-              Body: {post.body} <br/>
+              Body: {post.body} 
             </td>  
         </tr>
         )) 
