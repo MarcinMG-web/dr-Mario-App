@@ -10,7 +10,6 @@ const Table = () => {
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/comments`)
         .then(response => {
-            // console.log(response)
             setLoadin(false)
             setPosts(response.data)
         })
@@ -22,6 +21,7 @@ const Table = () => {
     },[])
     
     const sortClick = (properties) => {
+      // setLoadin(true)
       function compare(a, b) {
           if (a[properties] < b[properties]) {
               return -1;
@@ -39,36 +39,36 @@ const Table = () => {
   
   console.log("posortowane",posts)
 
+    // const loding = () => {
+    //   console.log("spiner")
+    // }
+
     if(loading){
       return (`loading ...`)
     }
 
    return (
-<div className="DataTable">
-  <div className="ScrollContainer">
+<div className="dataTable">
+  <div className="scrollContainer">
     <table className="table table-striped table-dark">
       <thead>
         <tr>
-          <th scope="col" className="scope" key={1}>ID</th>
-          <th scope="col" className="scope" key={2} onClick={() => sortClick("name")}>Name</th>
-          <th scope="col" className="scope" key={3} onClick={() => sortClick("email")}>Email</th>
-          <th scope="col" className="scope" key={4} onClick={() => sortClick("body")}>Body</th>
-          <th scope="col" className="summaryCol" key={5} onClick={() => sortClick()}>Summary</th>
+          <th scope="col" className="headingTable" key={1}>ID</th>
+          <th scope="col" className="headingTable" key={2} onClick={() => sortClick("name")}>Name</th>
+          <th scope="col" className="headingTable" key={3} onClick={() => sortClick("email")}
+          >Email</th>
+          <th scope="col" className="headingTable" key={4} onClick={() => sortClick("body")}>Body</th>
+          <th scope="col" className="summaryHeadingTable" key={5} onClick={() => sortClick()}>Summary</th>
         </tr>
       </thead>
       <tbody >
         <Row posts={posts} />
-        {/* 
-        <th scope="row">{post.id}</th>
-          <td>{post.name}</td>
-          <td>{post.email}</td>
-          <td>{post.body}</td>
-        */}
-        
       </tbody>
     </table>
   </div>
 </div>
+
+
   )
   
 }

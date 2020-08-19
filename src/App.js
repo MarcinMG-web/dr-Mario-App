@@ -5,7 +5,7 @@ import Heder  from './Component/Heder'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Heder />
       <Table />
     </div>
