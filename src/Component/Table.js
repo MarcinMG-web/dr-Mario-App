@@ -41,7 +41,7 @@ const Table = () => {
     }
 
    // Spiner
-    const spinner = () =>  {
+    const spinner = () => {
       document.getElementById("spinner").style.display = "flex";
     }
     const stopSpinner = () => {
@@ -87,15 +87,12 @@ const Table = () => {
                       </tr>
                     </thead>
                     <tbody>
-                    <Row posts={posts}/>
+                        <Row posts={posts}/>
                     </tbody>
                 </table>
             </div>
         </div>
-
-
     )
 }
-
 
 export default Table
