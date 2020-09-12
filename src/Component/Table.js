@@ -2,14 +2,15 @@ import React, {useState, useEffect} from 'react'
 import Row from './Row'
 import axios from 'axios'
 
-
 const Table = () => {
 
     const [isLoading, setLoading] = useState(true)
     const [posts, setPosts] = useState([])
 
+    
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/comments`)
+        const baseURL = `https://jsonplaceholder.typicode.com/comments`;
+            axios.get(baseURL)
             .then(response => {
                 setLoading(false)
                 setPosts(response.data)
@@ -21,8 +22,9 @@ const Table = () => {
             })
     }, [])
     
+    
     // Sort by alphabet
-    const sortClick = (properties) => {
+    const isSortClick = (properties) => {
         function compare(a, b) {
             spinner();
             if (a[properties] < b[properties]) {
@@ -40,13 +42,13 @@ const Table = () => {
         setPosts(post);
     }
 
-   // Spiner
+    // Spiner
     const spinner = () => {
       document.getElementById("spinner").style.display = "flex";
     }
     const stopSpinner = () => {
         const spinnerDelay = () => {
-            document.getElementById("spinner").style.display = "none"
+            document.getElementById("spinner").style.display = "none";
         }
         setTimeout(spinnerDelay, 2000);
     }
@@ -66,24 +68,27 @@ const Table = () => {
                 <table className="table table-striped table-dark">
                     <thead>
                       <tr>
-                          <th scope="col" className="headingTable" key={1}>ID</th>
+                          <th scope="col" className="headingTable" >ID</th>
 
-                          <th scope="col" className="headingTable" key={2}
-                              onClick={() => sortClick("name")}
+                          <th scope = "col" 
+                          className = "headingTable" 
+                          onClick={() => isSortClick("name")}
                           >Name
                           </th>
 
-                          <th scope="col" className="headingTable" key={3}
-                              onClick={() => sortClick("email")}
+                          <th scope="col" 
+                          className="headingTable" 
+                          onClick={() => isSortClick("email")}
                           >Email
                           </th>
 
-                          <th scope="col" className="headingTable" key={4}
-                              onClick={() => sortClick("body")}
+                          <th scope="col" 
+                          className="headingTable" 
+                          onClick={() => isSortClick("body")}
                           >Body
                           </th>
                           
-                          <th scope="col" className="summaryHeadingTable" key={5}>Summary</th>
+                          <th scope="col" className="summaryHeadingTable">Summary</th>
                       </tr>
                     </thead>
                     <tbody>
