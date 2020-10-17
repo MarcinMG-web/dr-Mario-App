@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 import './App.css';
 
-import Table from './Component/Table'
-import Heder from './Component/Heder'
+import {Table} from './Component/Table'
+import {Heder} from './Component/Heder'
 
 import * as serviceWorker from './serviceWorker';
 

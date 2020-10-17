@@ -2,16 +2,23 @@ import React, {useState, useEffect} from 'react'
 import Row from './Row'
 import { getAllPosts } from '../services/ApiServices'
 
-const Table = () => {
+export interface IPost {
+    postId: number,
+    id: string,
+    name: string,
+    email: string,
+    body: string,
+}
 
-    const [isLoading, setLoading] = useState(true)
-    const [posts, setPosts] = useState([])
+export const Table = ():JSX.Element => {
 
+    const [isLoading, setLoading] = React.useState(true)
+    const [posts, setPosts] = useState<IPost[]>([])
     
     useEffect(() => {
     
         const getPostsData = async() => {
-            
+            setLoading(true)
             const getPosts = await getAllPosts();
             setLoading(false)
             setPosts(getPosts)
@@ -22,8 +29,8 @@ const Table = () => {
     
     
     // Sort by alphabet
-    const isSortClick = (properties) => {
-        function compare(a, b) {
+    const isSortClick = (properties: any):void => {
+        function compare(a:any, b:any) {
             spinner();
             if (a[properties] < b[properties]) {
                 return -1;
@@ -41,18 +48,18 @@ const Table = () => {
     }
 
     // Spiner
-    const spinner = () => {
-      document.getElementById("spinner").style.display = "flex";
+    const spinner = ():void | null => {
+      document.getElementById('spinner')!.style.display = "flex";
     }
-    const stopSpinner = () => {
-        const spinnerDelay = () => {
-            document.getElementById("spinner").style.display = "none";
+    const stopSpinner = ():void | null => {
+        const spinnerDelay = (): void | null => {
+            document.getElementById('spinner')!.style.display = "none";
         }
         setTimeout(spinnerDelay, 2000);
     }
     
     if (isLoading) {
-        return (`loading ...`)
+        return <h6>loading ...</h6>
     }
 
 
@@ -97,5 +104,3 @@ const Table = () => {
         </div>
     )
 }
-
-export default Table
