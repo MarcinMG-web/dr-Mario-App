@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Row from './Row'
-import axios from 'axios'
+import { getAllPosts } from '../services/ApiServices'
 
 const Table = () => {
 
@@ -9,17 +9,15 @@ const Table = () => {
 
     
     useEffect(() => {
-        const baseURL = `https://jsonplaceholder.typicode.com/comments`;
-            axios.get(baseURL)
-            .then(response => {
-                setLoading(false)
-                setPosts(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-                setLoading(false)
-                setPosts([])
-            })
+    
+        const getPostsData = async() => {
+            
+            const getPosts = await getAllPosts();
+            setLoading(false)
+            setPosts(getPosts)
+        }
+    
+        getPostsData();
     }, [])
     
     
