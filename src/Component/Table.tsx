@@ -29,7 +29,7 @@ export const Table = ():JSX.Element => {
     
     
     // Sort by alphabet
-    const isSortClick = (properties: any):void => {
+    const isSortClick = (properties:any) => {
         function compare(a:any, b:any) {
             spinner();
             if (a[properties] < b[properties]) {
@@ -48,11 +48,11 @@ export const Table = ():JSX.Element => {
     }
 
     // Spiner
-    const spinner = ():void | null => {
+    const spinner = ():void => {
       document.getElementById('spinner')!.style.display = "flex";
     }
-    const stopSpinner = ():void | null => {
-        const spinnerDelay = (): void | null => {
+    const stopSpinner = ():void  => {
+        const spinnerDelay = (): void => {
             document.getElementById('spinner')!.style.display = "none";
         }
         setTimeout(spinnerDelay, 2000);
