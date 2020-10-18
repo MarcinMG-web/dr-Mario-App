@@ -6,7 +6,7 @@ interface IProps {
   posts: any
 }
 
-const Row = ({posts}:IProps):JSX.Element => {
+export const Row = ({posts}:IProps):JSX.Element => {
 
     return (
       
@@ -26,4 +26,3 @@ const Row = ({posts}:IProps):JSX.Element => {
       )) 
     )
 }
-export default Row

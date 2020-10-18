@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import Row from './Row'
+import {Row} from './Row'
 import { getAllPosts } from '../services/ApiServices'
 
 export interface IPost {
     postId: number,
-    id: string,
+    id: number,
     name: string,
     email: string,
     body: string,
@@ -29,7 +29,7 @@ export const Table = ():JSX.Element => {
     
     
     // Sort by alphabet
-    const isSortClick = (properties:any) => {
+    const isSortClick = (properties: string):void => {
         function compare(a:any, b:any) {
             spinner();
             if (a[properties] < b[properties]) {
