@@ -1,4 +1,4 @@
-# dr-Eryk-App - medical aplication
+# dr-Mario-App - medical aplication
 
 Text data in tabular form. The table is made up with 1 header line and multiple lines of data.
 
