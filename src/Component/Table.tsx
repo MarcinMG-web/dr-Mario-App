@@ -1,106 +1,110 @@
-import React, {useState, useEffect} from 'react'
-import {Row} from './Row'
-import { getAllPosts } from '../services/ApiServices'
+import React, { useState, useEffect } from 'react';
+import { Row } from './Row';
+import { getAllPosts } from '../services/ApiServices';
 
 export interface IPost {
-    postId: number,
-    id: number,
-    name: string,
-    email: string,
-    body: string,
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
 }
 
-export const Table = ():JSX.Element => {
+export const Table = (): JSX.Element => {
+  const [isLoading, setLoading] = React.useState(true);
+  const [posts, setPosts] = useState<IPost[]>([]);
 
-    const [isLoading, setLoading] = React.useState(true)
-    const [posts, setPosts] = useState<IPost[]>([])
-    
-    useEffect(() => {
-    
-        const getPostsData = async() => {
-            setLoading(true)
-            const getPosts = await getAllPosts();
-            setLoading(false)
-            setPosts(getPosts)
-        }
-    
-        getPostsData();
-    }, [])
-    
-    
-    // Sort by alphabet
-    const isSortClick = (properties: string):void => {
-        function compare(a:any, b:any) {
-            spinner();
-            if (a[properties] < b[properties]) {
-                return -1;
-            }
-            if (a[properties] > b[properties]) {
-                return 1;
-            }
-            return 0;
-        }
+  useEffect(() => {
+    const getPostsData = async () => {
+      setLoading(true);
+      const getPosts = await getAllPosts();
+      setLoading(false);
+      setPosts(getPosts);
+    };
 
-        const post = posts.sort(compare).slice();
-        stopSpinner();
-       
-        setPosts(post);
+    getPostsData();
+  }, []);
+
+  // Sort by alphabet
+  const isSortClick = (properties: string): void => {
+    function compare(a: any, b: any) {
+      spinner();
+      if (a[properties] < b[properties]) {
+        return -1;
+      }
+      if (a[properties] > b[properties]) {
+        return 1;
+      }
+      return 0;
     }
 
-    // Spiner
-    const spinner = ():void => {
-      document.getElementById('spinner')!.style.display = "flex";
-    }
-    const stopSpinner = ():void  => {
-        const spinnerDelay = (): void => {
-            document.getElementById('spinner')!.style.display = "none";
-        }
-        setTimeout(spinnerDelay, 2000);
-    }
-    
-    if (isLoading) {
-        return <h6>loading ...</h6>
-    }
+    const post = posts.sort(compare).slice();
+    stopSpinner();
 
+    setPosts(post);
+  };
 
-    return (
+  // Spiner
+  const spinner = (): void => {
+    document.getElementById('spinner')!.style.display = 'flex';
+  };
+  const stopSpinner = (): void => {
+    const spinnerDelay = (): void => {
+      document.getElementById('spinner')!.style.display = 'none';
+    };
+    setTimeout(spinnerDelay, 2000);
+  };
 
-        <div className="dataTable">
-                    
-            <div id="spinner" className="loading"></div>
+  if (isLoading) {
+    return <h6>loading ...</h6>;
+  }
 
-            <div className="scrollContainer">
-                <table className="table table-striped table-dark">
-                    <thead>
-                      <tr>
-                          <th scope="col" className="headingTable" >ID</th>
+  return (
+    <div className='dataTable'>
+      <div id='spinner' className='loading'></div>
 
-                          <th scope = "col" 
-                          className = "headingTable" 
-                          onClick={() => isSortClick("name")}
-                          >Name
-                          </th>
+      <div className='scrollContainer'>
+        <table className='table table-striped table-dark'>
+          <thead>
+            <tr>
+              <th scope='col' className='headingTable'>
+                ID
+              </th>
 
-                          <th scope="col" 
-                          className="headingTable" 
-                          onClick={() => isSortClick("email")}
-                          >Email
-                          </th>
+              <th
+                scope='col'
+                className='headingTable'
+                onClick={() => isSortClick('name')}
+              >
+                Name
+              </th>
 
-                          <th scope="col" 
-                          className="headingTable" 
-                          onClick={() => isSortClick("body")}
-                          >Body
-                          </th>
-                          
-                          <th scope="col" className="summaryHeadingTable">Summary</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <Row posts={posts}/>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    )
-}
+              <th
+                scope='col'
+                className='headingTable'
+                onClick={() => isSortClick('email')}
+              >
+                Email
+              </th>
+
+              <th
+                scope='col'
+                className='headingTable'
+                onClick={() => isSortClick('body')}
+              >
+                Body
+              </th>
+
+              <th scope='col' className='summaryHeadingTable'>
+                Summary
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <Row posts={posts} />
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};

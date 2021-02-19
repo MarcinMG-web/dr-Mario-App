@@ -1,28 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-import {IPost} from './Table'
+import { IPost } from './Table';
 
 interface IProps {
-  posts: any
+  posts: any;
 }
 
-export const Row = ({posts}:IProps):JSX.Element => {
-
-    return (
-      
-     posts.map((post:IPost) => (
-        <tr key={post.id}>
-          <th key={post.id} scope="row">{post.id}</th>
-          <td key={post.name} >{post.name}</td>
-          <td key={post.email} >{post.email}</td>
-          <td key={post.body}>{post.body}</td>
-            <td className="summaryRow px-0 py-0" >
-              # {post.id} <br/>
-              Name: {post.name} <br/>
-              Email: {post.email} <br/>
-              Body: {post.body} 
-            </td>  
-        </tr>
-      )) 
-    )
-}
+export const Row = ({ posts }: IProps): JSX.Element => {
+  return posts.map((post: IPost) => (
+    <tr key={post.id}>
+      <th key={post.id} scope='row'>
+        {post.id}
+      </th>
+      <td key={post.name}>{post.name}</td>
+      <td key={post.email}>{post.email}</td>
+      <td key={post.body}>{post.body}</td>
+      <td className='summaryRow px-0 py-0'>
+        # {post.id} <br />
+        Name: {post.name} <br />
+        Email: {post.email} <br />
+        Body: {post.body}
+      </td>
+    </tr>
+  ));
+};
